@@ -4,6 +4,10 @@
       <h1>{{ moto }}</h1>
       <h3>Now the dark days are done</h3>
       <h3>And the bright days are here</h3>
+      <slot>Default Slot Content</slot>
+      <div class="actions">
+        <slot name="links"></slot>
+      </div>
       <p>{{ header }}</p>
     </div>
   </div>
@@ -20,8 +24,8 @@ export default {
 }
 </script>
 
-
-<style scoped>
+// if I use scope in style, it did not render the slot
+<style>
   .modal {
     width: 400px;
     padding: 20px;
@@ -29,6 +33,8 @@ export default {
     background: white;
     border-radius: 10px;
   }
+
+
   .backdrop {
     top: 0;
     position: fixed;
@@ -36,7 +42,7 @@ export default {
     width: 100%;
     height: 100%;
   }
-  h1, h3 {
+  .modal h1, h3 {
     color: rgb(208, 147, 6);
   }
 
@@ -47,5 +53,28 @@ export default {
 
   .modal.sale h1{
     color: white;
+  }
+
+  .modal .actions {
+    text-align: center;
+    margin: 30px 0 10px 0;
+    color: #333;
+  }
+
+  .modal .actions a {
+    color: #333;
+    padding: 8px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    text-decoration: none;
+    margin: 10px;
+  }
+
+  .modal.sale .actions {
+    color: white;
+  }
+
+  .modal.sale .actions a{
+  color: white;
   }
 </style>
